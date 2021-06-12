@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="~/Content/logo.jpg" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+<body>
+    <div class="navbar navbar-expand-md navbar-light bg-white p-0">
+        <div class="container">
+ 
+        </div>
+    </div>
+    <div class="body-content" >
+
+        @RenderBody()
+        <hr />
+<footer class="footer">
+    <div class="row">
+        <div class="col-sm-4 col-md-4 footer-navigation">
+            <h3><a href="#">Easy<span>Plan</span></a></h3>
+            <p class="company-name"><span>Juan E. Araica © 2020</span></p>
+        </div>
+        <div class="col-sm-4 col-md-4 footer-contacts">
+            <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                <p><span class="new-line-span"></span>San Jose, Costa Rica</p>
+            </div>
+            <div><i class="fa fa-phone footer-contacts-icon"></i>
+                <p class="footer-center-info email text-left"> +506 86549460</p>
+            </div>
+            <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                <p> <a href="#" target="_blank">juanaraica149@gmail.com</a></p>
+            </div>
+        </div>
+        
+        <div class=" col-sm-4 col-md-4 footer-about">
+            <h4>About the company</h4>
+            <p>My personal project.</p>
+            <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+        </div>
+    </div>
+</footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
