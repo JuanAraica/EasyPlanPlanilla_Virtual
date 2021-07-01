@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db_a75e14_karlamailModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db_a75e14_karlamailModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Tbl_Adelantos">
           <Key>
             <PropertyRef Name="idAdelento" />
@@ -32,6 +32,7 @@
           </Key>
           <Property Name="idRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Registro" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="fecha" Type="nchar" MaxLength="22" />
         </EntityType>
         <EntityType Name="Tbl_Jornada">
           <Key>
@@ -59,6 +60,7 @@
           <Property Name="FechaJornada" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="SalarioJornada" Type="int" Nullable="false" />
           <Property Name="Observacion" Type="varchar" MaxLength="200" />
+          <Property Name="nombreJornada" Type="nchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Tbl_Prestamos">
           <Key>
@@ -195,8 +197,7 @@
             <End Role="Tbl_Salario" EntitySet="Tbl_Salario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_a75e14_karlamailModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -228,6 +229,7 @@
           </Key>
           <Property Name="idRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Registro" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="String" MaxLength="22" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Tbl_Jornada">
           <Key>
@@ -256,6 +258,7 @@
           <Property Name="SalarioJornada" Type="Int32" Nullable="false" />
           <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tbl_Trabajador" Relationship="Self.FK_Jornada_Trabajador" FromRole="Tbl_Jornada" ToRole="Tbl_Trabajador" />
+          <Property Name="nombreJornada" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Tbl_Prestamos">
           <Key>
@@ -430,6 +433,7 @@
           <EntitySetMapping Name="Tbl_Historial">
             <EntityTypeMapping TypeName="db_a75e14_karlamailModel.Tbl_Historial">
               <MappingFragment StoreEntitySet="Tbl_Historial">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="idRegistro" ColumnName="idRegistro" />
                 <ScalarProperty Name="Registro" ColumnName="Registro" />
               </MappingFragment>
@@ -438,6 +442,7 @@
           <EntitySetMapping Name="Tbl_Jornada">
             <EntityTypeMapping TypeName="db_a75e14_karlamailModel.Tbl_Jornada">
               <MappingFragment StoreEntitySet="Tbl_Jornada">
+                <ScalarProperty Name="nombreJornada" ColumnName="nombreJornada" />
                 <ScalarProperty Name="idJornada" ColumnName="idJornada" />
                 <ScalarProperty Name="CedulaTra" ColumnName="CedulaTra" />
                 <ScalarProperty Name="TipoJornada" ColumnName="TipoJornada" />

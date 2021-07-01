@@ -16,5 +16,6 @@ namespace EasyPlanv2.Models
     {
         public int idRegistro { get; set; }
         public string Registro { get; set; }
+        public string fecha { get; set; }
     }
 }

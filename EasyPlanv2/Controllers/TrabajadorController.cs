@@ -13,10 +13,11 @@ namespace EasyPlanv2.Controllers
     public class TrabajadorController : Controller
     {
         private easyPlanEntities db = new easyPlanEntities();
-
+        private HistorialController historial = new HistorialController();
         // GET: Trabajador
         public ActionResult Index()
         {
+            historial.RegistrarAccion("Se ha consultado el registro de los trabajadores");
             return View(db.Tbl_Trabajador.ToList());
         }
 

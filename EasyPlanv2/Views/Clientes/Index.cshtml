@@ -23,6 +23,9 @@
     <thead>
         <tr>
             <th scope="col">
+                Name
+            </th>
+            <th scope="col">
                 Contact
             </th>
             <th scope="col">
@@ -40,25 +43,34 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contacto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Proyecto)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.NombreCliente }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.NombreCliente }) |
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proyecto)
+            </td>
+            <td>
+                <button type="button" class="btn btn-success">
+                    <span style="color:#FF0000">@Html.ActionLink("Edit", "Edit", new { id = item.NombreCliente })</span>
+                </button>
+                <button type="button" class="btn btn-info">
+                    @Html.ActionLink("Details", "Details", new { id = item.NombreCliente })
+                </button>
+                <button type="button" class="btn btn-danger">
                     @Html.ActionLink("Delete", "Delete", new { id = item.NombreCliente })
-                </td>
-            </tr>
+                </button>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

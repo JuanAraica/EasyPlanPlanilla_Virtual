@@ -48,17 +48,21 @@ namespace EasyPlanv2.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idSalario,CedulaTra,SalarioBruto,Seguro,Prestamos,Adelantos,Otros,SalarioNeto,PrimeraFecha,UltimaFecha,TotalDeducciones,FechaSalario")] Tbl_Salario tbl_Salario)
+        public ActionResult Create([Bind(Include = "idSalario,CedulaTra,SalarioBruto,Seguro,Prestamos,Adelantos,Otros,SalarioNeto,PrimeraFecha,UltimaFecha,TotalDeducciones,FechaSalario")] Tbl_Salario salario)
         {
             if (ModelState.IsValid)
             {
-                db.Tbl_Salario.Add(tbl_Salario);
+                salario.Seguro = (int)(salario.SalarioBruto * 0.12);
+                salario.TotalDeducciones = (int)(salario.Adelantos + salario.Otros + salario.Prestamos + salario.Seguro);
+                salario.SalarioNeto = salario.SalarioBruto - salario.TotalDeducciones;
+                salario.FechaSalario = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                db.Tbl_Salario.Add(salario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CedulaTra = new SelectList(db.Tbl_Trabajador, "CedulaTra", "Nombre", tbl_Salario.CedulaTra);
-            return View(tbl_Salario);
+            ViewBag.CedulaTra = new SelectList(db.Tbl_Trabajador, "CedulaTra", "Nombre", salario.CedulaTra);
+            return View(salario);
         }
 
         // GET: Salario/Edit/5

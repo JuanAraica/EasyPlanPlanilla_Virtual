@@ -20,83 +20,60 @@
 <table class="table table-dark" style="text-align:center">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.SalarioBruto)
+            Trabajador
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Seguro)
+            Desde...
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prestamos)
+            ...Hasta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Adelantos)
+            Monto Bruto -
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Otros)
+            Total de deducciones = 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SalarioNeto)
+            Salario Neto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrimeraFecha)
+            Fecha de emición
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UltimaFecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalDeducciones)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaSalario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tbl_Trabajador.Nombre)
-        </th>
+
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SalarioBruto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Seguro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prestamos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adelantos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Otros)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SalarioNeto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrimeraFecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UltimaFecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalDeducciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaSalario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tbl_Trabajador.Nombre)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idSalario }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idSalario }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idSalario })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tbl_Trabajador.Nombre) @Html.DisplayFor(modelItem => item.Tbl_Trabajador.Apellido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PrimeraFecha)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UltimaFecha)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SalarioBruto)
+    </td>
+    <td>
+       -@Html.DisplayFor(modelItem => item.TotalDeducciones)=
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SalarioNeto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaSalario)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.idSalario }) |
+        @Html.ActionLink("Details", "Details", new { id = item.idSalario }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.idSalario })
+    </td>
+</tr>
     }
 
 </table>

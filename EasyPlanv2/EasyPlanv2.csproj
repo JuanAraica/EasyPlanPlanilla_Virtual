@@ -214,6 +214,7 @@
     <Content Include="Models\EasyplanContext.edmx.diagram">
       <DependentUpon>EasyplanContext.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -272,10 +273,6 @@
     <Content Include="Views\Jornada\Details.cshtml" />
     <Content Include="Views\Jornada\Edit.cshtml" />
     <Content Include="Views\Jornada\Index.cshtml" />
-    <Content Include="Views\Historial\Create.cshtml" />
-    <Content Include="Views\Historial\Delete.cshtml" />
-    <Content Include="Views\Historial\Details.cshtml" />
-    <Content Include="Views\Historial\Edit.cshtml" />
     <Content Include="Views\Historial\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

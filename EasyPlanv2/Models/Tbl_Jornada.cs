@@ -36,6 +36,7 @@ namespace EasyPlanv2.Models
         public string FechaJornada { get; set; }
         public int SalarioJornada { get; set; }
         public string Observacion { get; set; }
+        public string nombreJornada { get; set; }
     
         public virtual Tbl_Trabajador Tbl_Trabajador { get; set; }
     }

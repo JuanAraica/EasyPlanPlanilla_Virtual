@@ -1,33 +1,41 @@
 ﻿@model IEnumerable<EasyPlanv2.Models.Tbl_Historial>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Historial";
+    Layout = "~/Views/Shared/_LayoutDemo.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<div class="card text-center">
+
+    <div class="card-body">
+        <img src="~/Content/logo.jpg" />
+        <h5 class="card-title">History</h5>
+   </div>
+</div>
+
+ 
+<table class="table table-dark" style="text-align:center">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Registro)
+            Registry
         </th>
-        <th></th>
+        <th>
+            Date / Time
+        </th>
+
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Registro)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idRegistro }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idRegistro }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idRegistro })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Registro)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fecha)
+    </td>
+</tr>
+    }
 
 </table>
