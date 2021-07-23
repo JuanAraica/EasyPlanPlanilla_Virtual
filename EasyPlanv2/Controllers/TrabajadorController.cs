@@ -74,9 +74,7 @@ namespace EasyPlanv2.Controllers
             return View(tbl_Trabajador);
         }
 
-        // POST: Trabajador/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CedulaTra,Nombre,Apellido,Puesto,Edad,Telefono,Correo,FechaNacimiento,Nacionalidad,NumEmpleado,Ciudad,Direccion,FechaEmpleo,Empleador,FechaDespido,InicioIncapacidad,FinalIncapacidad,Padecimientos,Estado,Observacion")] Tbl_Trabajador tbl_Trabajador)
@@ -123,6 +121,29 @@ namespace EasyPlanv2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string CedulaTra,string Correo)
+        {
+            if (ModelState.IsValid)
+            {
+                Tbl_Trabajador tra=db.Tbl_Trabajador.Find(CedulaTra);
+                if (tra!=null)
+                {
+                    if (tra.Correo==Correo)
+                    {
+                        Session["Usuario"] = tra.Nombre + " "+tra.Apellido;
+                        return RedirectToAction("Index");
+                    }                   
+                }                
+            }
+            return View();
         }
     }
 }

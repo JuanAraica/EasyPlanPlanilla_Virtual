@@ -52,7 +52,6 @@ namespace EasyPlanv2.Controllers
         }
         public ActionResult Projection()
         {
-
             return View();
         }
         public ActionResult Values()

@@ -10,118 +10,107 @@ using EasyPlanv2.Models;
 
 namespace EasyPlanv2.Controllers
 {
-    public class ClientesController : Controller
+    public class UserController : Controller
     {
         private easyPlanEntities db = new easyPlanEntities();
 
-        // GET: Clientes
+        // GET: User
         public ActionResult Index()
         {
-            return View(db.Tbl_Clientes.ToList());
+            return View(db.Tbl_Users.ToList());
         }
 
-
-        // GET: Clientes/Details/5
+        // GET: User/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tbl_Clientes tbl_Clientes = db.Tbl_Clientes.Find(id);
-            if (tbl_Clientes == null)
+            Tbl_Users tbl_Users = db.Tbl_Users.Find(id);
+            if (tbl_Users == null)
             {
                 return HttpNotFound();
             }
-            return View(tbl_Clientes);
+            return View(tbl_Users);
         }
 
-        public ActionResult DetailsModal(string id)
-        {
-            Tbl_Clientes tbl_Clientes = db.Tbl_Clientes.Find(id);
-
-            return View();
-        }
-
-
-
-
-        // GET: Clientes/Create
+        // GET: User/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Clientes/Create
+        // POST: User/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NombreCliente,Contacto,Direccion,Telefono,Email,Proyecto")] Tbl_Clientes tbl_Clientes)
+        public ActionResult Create([Bind(Include = "Nick,Correo,Passcont,Tipo")] Tbl_Users tbl_Users)
         {
             if (ModelState.IsValid)
             {
-                db.Tbl_Clientes.Add(tbl_Clientes);
+                db.Tbl_Users.Add(tbl_Users);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tbl_Clientes);
+            return View(tbl_Users);
         }
 
-        // GET: Clientes/Edit/5
+        // GET: User/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tbl_Clientes tbl_Clientes = db.Tbl_Clientes.Find(id);
-            if (tbl_Clientes == null)
+            Tbl_Users tbl_Users = db.Tbl_Users.Find(id);
+            if (tbl_Users == null)
             {
                 return HttpNotFound();
             }
-            return View(tbl_Clientes);
+            return View(tbl_Users);
         }
 
-        // POST: Clientes/Edit/5
+        // POST: User/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NombreCliente,Contacto,Direccion,Telefono,Email,Proyecto")] Tbl_Clientes tbl_Clientes)
+        public ActionResult Edit([Bind(Include = "Nick,Correo,Passcont,Tipo")] Tbl_Users tbl_Users)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbl_Clientes).State = EntityState.Modified;
+                db.Entry(tbl_Users).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tbl_Clientes);
+            return View(tbl_Users);
         }
 
-        // GET: Clientes/Delete/5
+        // GET: User/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tbl_Clientes tbl_Clientes = db.Tbl_Clientes.Find(id);
-            if (tbl_Clientes == null)
+            Tbl_Users tbl_Users = db.Tbl_Users.Find(id);
+            if (tbl_Users == null)
             {
                 return HttpNotFound();
             }
-            return View(tbl_Clientes);
+            return View(tbl_Users);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Tbl_Clientes tbl_Clientes = db.Tbl_Clientes.Find(id);
-            db.Tbl_Clientes.Remove(tbl_Clientes);
+            Tbl_Users tbl_Users = db.Tbl_Users.Find(id);
+            db.Tbl_Users.Remove(tbl_Users);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
